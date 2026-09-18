@@ -1,5 +1,5 @@
 import { useInView, useReducedMotion } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 /** Counts a number up once the element scrolls into view. */
 export function useCountUp(target: number, { duration = 1600, decimals = 0 } = {}) {
@@ -26,16 +26,25 @@ export function useCountUp(target: number, { duration = 1600, decimals = 0 } = {
   return { ref, display: (reduced ? target : value).toFixed(decimals) }
 }
 
-/** Steps through a list on an interval, pausing entirely for reduced-motion users. */
+/**
+ * Steps through a list on an interval. Rotation stops for good once the visitor
+ * picks an item themselves, and never starts for reduced-motion users.
+ */
 export function useRotation(length: number, intervalMs = 4200) {
   const reduced = useReducedMotion()
   const [index, setIndex] = useState(0)
+  const [takenOver, setTakenOver] = useState(false)
 
   useEffect(() => {
-    if (reduced || length < 2) return
+    if (reduced || takenOver || length < 2) return
     const id = window.setInterval(() => setIndex((current) => (current + 1) % length), intervalMs)
     return () => window.clearInterval(id)
-  }, [length, intervalMs, reduced])
+  }, [length, intervalMs, reduced, takenOver])
 
-  return [index, setIndex] as const
+  const select = useCallback((next: number) => {
+    setTakenOver(true)
+    setIndex(next)
+  }, [])
+
+  return [index, select] as const
 }

@@ -1,6 +1,5 @@
 import { signupUrl, solutions } from '../lib/site'
 import { ArrowIcon, ButtonLink } from './ui/Button'
-import { Icon } from './ui/Icon'
 import { Reveal } from './ui/Reveal'
 import { SectionHeading } from './ui/Section'
 
@@ -38,8 +37,8 @@ export function Solutions() {
               <p className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-white/55">{solution.copy}</p>
               <ul className="mt-6 space-y-2 border-t border-white/7 pt-5">
                 {solution.points.map((point) => (
-                  <li key={point} className="flex items-center gap-2.5 text-[0.85rem] text-white/60">
-                    <Icon name="gem" className="size-3.5 shrink-0 text-brand-gold/70" />
+                  <li key={point} className="flex items-center gap-3 text-[0.85rem] text-white/60">
+                    <span aria-hidden="true" className="size-1.5 shrink-0 rotate-45 bg-brand-gold/75" />
                     {point}
                   </li>
                 ))}

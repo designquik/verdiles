@@ -120,7 +120,7 @@ export function AdminMock() {
 
           <div className="flex">
             {/* sidebar */}
-            <aside className="hidden w-[10.5rem] shrink-0 flex-col gap-3 border-r border-white/6 bg-black/25 p-3 md:flex">
+            <aside className="hidden w-[11.5rem] shrink-0 flex-col gap-3 border-r border-white/6 bg-black/25 p-3 md:flex">
               <div className="flex items-center gap-2 rounded-lg border border-white/8 bg-white/[0.03] px-2 py-2">
                 <Mark className="size-5" />
                 <div className="min-w-0 flex-1">
@@ -359,7 +359,7 @@ export function AdminMock() {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute -top-5 -right-3 hidden w-56 md:block lg:-right-10"
+        className="absolute -top-9 -right-4 hidden w-56 md:block lg:-right-14"
       >
         <div className="surface animate-float rounded-2xl p-3.5 [animation-delay:-4s]">
           <div className="flex items-center gap-2">

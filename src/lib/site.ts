@@ -1,6 +1,7 @@
 /**
  * Single source of truth for marketing copy and outbound links.
- * VITE_APP_URL points every Login / primary CTA at the Verdiles admin.
+ * VITE_APP_URL points every Login / primary CTA at the Verdiles admin app.
+ * Default target is the current admin host until app.verdiles.com exists.
  */
 const rawAppUrl = import.meta.env.VITE_APP_URL?.trim()
 
@@ -8,13 +9,18 @@ export const site = {
   name: 'Verdiles',
   parent: 'Designquik',
   domain: 'verdiles.com',
-  appUrl: rawAppUrl && rawAppUrl.length > 0 ? rawAppUrl : 'https://app.verdiles.com',
+  appUrl: rawAppUrl && rawAppUrl.length > 0 ? rawAppUrl : 'https://e-commerce-47038.web.app',
   contactEmail: 'hello@verdiles.com',
   tagline: 'Multi-tenant ecommerce platform',
 } as const
 
-export const loginUrl = `${site.appUrl.replace(/\/$/, '')}/login`
-export const signupUrl = `${site.appUrl.replace(/\/$/, '')}/signup`
+/**
+ * The admin app gates on auth at its root and toggles between sign in and
+ * create account there, so Login and the primary CTAs share one destination.
+ */
+export const adminUrl = site.appUrl.replace(/\/$/, '')
+export const loginUrl = adminUrl
+export const signupUrl = adminUrl
 
 export type NavGroup = {
   label: string

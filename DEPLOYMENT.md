@@ -26,7 +26,8 @@ same Firebase project** — the registrar A record does not need to change.
 
 ## Build
 
-`VITE_APP_URL` is inlined at build time and drives `Login` → `$VITE_APP_URL/login` and primary CTAs → `$VITE_APP_URL/signup`.
+`VITE_APP_URL` is inlined at build time and is where both `Login` and the primary CTAs point. The admin app gates on auth
+at its root and toggles between sign in and create account there, so no `/login` or `/signup` path is appended.
 
 ```bash
 npm ci

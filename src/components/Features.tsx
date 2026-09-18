@@ -100,6 +100,10 @@ function TenantGridVisual() {
             <p className="truncate text-[0.78rem] font-semibold text-white">{tenant.name}</p>
           </div>
           <p className="mt-1 truncate text-[0.66rem] text-white/40">{tenant.domain}</p>
+          <dl className="mt-3 flex items-baseline gap-1.5">
+            <dd className="text-[0.8rem] font-semibold text-white/85">{tenant.stats[0].value}</dd>
+            <dt className="truncate text-[0.6rem] tracking-[0.12em] text-white/35 uppercase">{tenant.stats[0].label}</dt>
+          </dl>
           <div className="mt-3 flex items-center justify-between border-t border-white/6 pt-2.5">
             <span className="text-[0.6rem] tracking-[0.14em] text-white/30 uppercase">{tenant.themeName}</span>
             <span className="flex items-center gap-1 text-[0.6rem] text-brand-mint">
