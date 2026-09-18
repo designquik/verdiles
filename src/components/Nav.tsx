@@ -85,7 +85,7 @@ export function Nav() {
             >
               Login
             </a>
-            <ButtonLink href={signupUrl} size="sm" className="hidden sm:inline-flex">
+            <ButtonLink href={signupUrl} size="sm" className="max-[400px]:hidden">
               Start building
               <ArrowIcon />
             </ButtonLink>
@@ -180,9 +180,14 @@ export function Nav() {
                   <a
                     href={group.href}
                     onClick={() => setMobileOpen(false)}
-                    className="font-display text-3xl tracking-tight text-white"
+                    className="font-display flex items-center gap-3 text-3xl tracking-tight text-white"
                   >
                     {group.label}
+                    {group.label === 'Pricing' && (
+                      <span className="rounded-full border border-brand-gold/30 bg-brand-gold/10 px-2 py-0.5 font-sans text-[0.6rem] font-semibold tracking-wide text-brand-gold/90 uppercase">
+                        Soon
+                      </span>
+                    )}
                   </a>
                   {group.menu && (
                     <div className="mt-3 grid gap-1.5">

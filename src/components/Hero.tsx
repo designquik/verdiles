@@ -37,7 +37,7 @@ export function Hero() {
       <div className="shell">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div {...rise(0.05)} className="flex justify-center">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] py-1.5 pr-4 pl-1.5 text-[0.72rem] tracking-wide text-white/65 backdrop-blur-md">
+            <span className="inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-1.5 py-1.5 text-center text-[0.72rem] tracking-wide text-white/65 backdrop-blur-md sm:pr-4">
               <span className="rounded-full bg-[linear-gradient(96deg,var(--color-brand-emerald),var(--color-brand-cyan))] px-2 py-0.5 text-[0.62rem] font-bold tracking-[0.12em] text-ink-950 uppercase">
                 {site.tagline}
               </span>
