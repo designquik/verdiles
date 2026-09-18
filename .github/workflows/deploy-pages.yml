@@ -1,0 +1,75 @@
+name: Deploy marketing site
+
+on:
+  push:
+    branches:
+      - main
+      - 'cursor/deploy-marketing-site-**'
+  workflow_dispatch:
+
+# Allow one concurrent deployment, letting in-progress runs finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Resolve base path
+        id: base
+        # configure-pages reports "/verdiles" for a project site and "/" once a
+        # custom domain is attached. Vite needs a trailing slash.
+        run: |
+          raw='${{ steps.pages.outputs.base_path }}'
+          case "$raw" in
+            ''|'/') resolved='/' ;;
+            */) resolved="$raw" ;;
+            *) resolved="$raw/" ;;
+          esac
+          echo "path=$resolved" >> "$GITHUB_OUTPUT"
+          echo "Building with base path: $resolved"
+
+      - run: npm ci
+
+      - name: Build
+        env:
+          # Login and primary CTAs resolve against the admin app.
+          VITE_APP_URL: ${{ vars.VITE_APP_URL || 'https://e-commerce-47038.web.app' }}
+          BASE_PATH: ${{ steps.base.outputs.path }}
+        run: npm run build
+
+      - name: Serve index.html for unknown paths
+        run: cp dist/index.html dist/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
