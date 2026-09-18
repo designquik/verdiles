@@ -85,7 +85,7 @@ export function Nav() {
             >
               Login
             </a>
-            <ButtonLink href={signupUrl} size="sm" className="max-[400px]:hidden">
+            <ButtonLink href={signupUrl} size="sm" className="max-[359px]:hidden">
               Start building
               <ArrowIcon />
             </ButtonLink>

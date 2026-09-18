@@ -33,7 +33,7 @@ export function HowItWorks() {
 
           <ol className="grid gap-8 lg:grid-cols-4 lg:gap-6">
             {steps.map((step, index) => (
-              <Reveal as="li" key={step.step} delay={index * 0.1} className="relative">
+              <Reveal as="li" key={step.step} delay={index * 0.1} className="relative flex h-full flex-col">
                 <div className="flex items-center gap-4 lg:block">
                   <span className="font-display text-brand-gradient relative z-10 text-4xl leading-none lg:text-5xl">
                     {step.step}
@@ -46,7 +46,7 @@ export function HowItWorks() {
 
                 <h3 className="mt-6 text-lg font-semibold sm:text-xl">{step.title}</h3>
                 <p className="mt-2.5 text-[0.9rem] leading-relaxed text-white/55">{step.copy}</p>
-                <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-[0.68rem] tracking-wide text-white/50">
+                <p className="mt-4 inline-flex items-center gap-2 self-start rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-[0.68rem] tracking-wide text-white/50 lg:mt-auto lg:pt-1">
                   {step.meta}
                 </p>
               </Reveal>
