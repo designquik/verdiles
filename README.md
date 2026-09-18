@@ -27,11 +27,20 @@ Copy `.env.example` to `.env.local` and point the CTAs at the Verdiles admin app
 cp .env.example .env.local
 ```
 
-| Variable       | Purpose                                                                         | Default (when unset)     |
-| -------------- | ------------------------------------------------------------------------------- | ------------------------ |
-| `VITE_APP_URL` | Base URL of the Verdiles admin. `Login` → `$VITE_APP_URL/login`, primary CTAs → `$VITE_APP_URL/signup`. | `https://app.verdiles.com` |
+| Variable       | Purpose                                                                                   | Default (when unset)              |
+| -------------- | ----------------------------------------------------------------------------------------- | --------------------------------- |
+| `VITE_APP_URL` | Base URL of the Verdiles admin app. Both `Login` and the primary CTAs resolve to it.       | `https://e-commerce-47038.web.app` |
+
+The admin app gates on auth at its root and toggles between sign in and create account there, so the marketing site does
+not append `/login` or `/signup`. When the admin moves to `app.verdiles.com`, set `VITE_APP_URL=https://app.verdiles.com`
+in the host's build environment and redeploy — no code change needed.
 
 Vite only exposes variables prefixed with `VITE_`, and they are inlined at build time — rebuild after changing them.
+
+### Production model
+
+`verdiles.com` serves this marketing site. The admin app lives on its own host (currently
+`https://e-commerce-47038.web.app`), and this site links out to it for Login and every primary CTA.
 
 ## Brand rules
 
@@ -92,7 +101,7 @@ The build output is a fully static `dist/` folder — any static host works.
 
 ```bash
 npm ci
-VITE_APP_URL=https://app.verdiles.com npm run build
+VITE_APP_URL=https://e-commerce-47038.web.app npm run build
 # deploy the contents of dist/
 ```
 
