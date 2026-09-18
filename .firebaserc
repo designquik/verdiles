@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "e-commerce-47038"
+  },
+  "targets": {
+    "e-commerce-47038": {
+      "hosting": {
+        "marketing": ["verdiles-marketing"]
+      }
+    }
+  }
+}
