@@ -92,29 +92,19 @@ The build output is a fully static `dist/` folder — any static host works.
 
 ```bash
 npm ci
-VITE_APP_URL=https://app.verdiles.com npm run build
-# deploy the contents of dist/
+VITE_APP_URL=https://e-commerce-47038.web.app npm run build
+firebase deploy --only hosting:marketing
 ```
 
 SPA note: this is a single page with hash anchors, so no rewrite rules are required. If routes are added later,
-rewrite unknown paths to `/index.html`.
+`firebase.json` already rewrites unknown paths to `/index.html`.
 
-### Pointing the domain (when DNS is ready)
+**[DEPLOYMENT.md](DEPLOYMENT.md) is the runbook** — it covers the Firebase Hosting setup, the exact DNS steps to put
+marketing on `verdiles.com` while the admin app keeps `e-commerce-47038.web.app` and gains `app.verdiles.com`, and the
+GitHub Pages preview path.
 
-1. Deploy `dist/` to the host of choice (Vercel, Netlify, Cloudflare Pages, S3 + CloudFront, or an nginx box).
-2. Add both `verdiles.com` and `www.verdiles.com` as custom domains in the host.
-3. Create the DNS records the host asks for — typically:
-   - apex `verdiles.com` → `A` / `ALIAS` record to the host's IP or anycast target,
-   - `www` → `CNAME` to the host's target,
-   - redirect `www` → apex (or the reverse) so only one canonical host serves traffic.
-4. Let the host issue TLS (Let's Encrypt / managed certificate) and confirm HTTPS plus HSTS are on.
-5. Set `VITE_APP_URL` in the host's build environment to the live admin URL and redeploy so `Login` and the CTAs resolve.
-6. Post-launch checks: `https://verdiles.com` and `https://www.verdiles.com` both resolve to the canonical host, the
-   favicon renders, and `https://verdiles.com/og-image.png` returns the card image (the OG/Twitter tags in
-   `index.html` reference absolute `https://verdiles.com` URLs).
-
-Until the domain is live, previews run fine on the host's default URL — nothing in the code is hard-coded to a host
-other than the absolute social-card URLs in `index.html`.
+`BASE_PATH` sets the Vite base for subpath hosting (GitHub Pages project sites). It defaults to `/`, which is what
+Firebase Hosting and a custom domain need.
 
 ## Accessibility and motion
 
