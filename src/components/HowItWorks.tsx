@@ -21,7 +21,7 @@ export function HowItWorks() {
         />
 
         <div className="relative mt-16">
-          <div aria-hidden="true" className="absolute top-[3.15rem] right-0 left-0 hidden lg:block">
+          <div aria-hidden="true" className="absolute top-[4.56rem] right-0 left-0 hidden lg:block">
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -35,14 +35,16 @@ export function HowItWorks() {
             {steps.map((step, index) => (
               <Reveal as="li" key={step.step} delay={index * 0.1} className="relative">
                 <div className="flex items-center gap-4 lg:block">
-                  <span className="font-display text-brand-gradient relative z-10 text-4xl lg:text-5xl">{step.step}</span>
+                  <span className="font-display text-brand-gradient relative z-10 text-4xl leading-none lg:text-5xl">
+                    {step.step}
+                  </span>
                   <span
                     aria-hidden="true"
-                    className="relative z-10 mt-0 block size-2.5 shrink-0 rotate-45 border border-brand-teal/50 bg-ink-950 lg:mt-5"
+                    className="relative z-10 block size-2.5 shrink-0 rotate-45 bg-[linear-gradient(135deg,var(--color-brand-emerald),var(--color-brand-cyan))] shadow-[0_0_0_4px_var(--color-ink-950),0_0_16px_rgba(0,227,187,0.75)] lg:mt-5"
                   />
                 </div>
 
-                <h3 className="mt-5 text-lg font-semibold sm:text-xl">{step.title}</h3>
+                <h3 className="mt-6 text-lg font-semibold sm:text-xl">{step.title}</h3>
                 <p className="mt-2.5 text-[0.9rem] leading-relaxed text-white/55">{step.copy}</p>
                 <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-[0.68rem] tracking-wide text-white/50">
                   {step.meta}
