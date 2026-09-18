@@ -10,13 +10,18 @@ export function CtaBand() {
         <Reveal className="relative overflow-hidden rounded-[2rem] border border-white/10 px-6 py-16 text-center sm:px-14 sm:py-20">
           <div
             aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-[linear-gradient(140deg,rgba(0,245,124,0.16),rgba(0,227,187,0.08)_45%,rgba(0,194,254,0.16))]"
+            className="absolute inset-0 -z-10 bg-[linear-gradient(140deg,rgba(0,245,124,0.45),rgba(0,227,187,0.18)_45%,rgba(0,194,254,0.45))]"
           />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink-950/78" />
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink-950/82" />
           <div
             aria-hidden="true"
-            className="absolute inset-x-0 -bottom-24 -z-10 h-56 bg-[radial-gradient(50%_100%_at_50%_100%,rgba(0,227,187,0.28),transparent_70%)] blur-2xl"
+            className="absolute inset-x-0 -top-40 -z-10 h-80 bg-[radial-gradient(45%_100%_at_50%_100%,rgba(0,245,124,0.22),transparent_70%)] blur-2xl"
           />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 -bottom-28 -z-10 h-64 bg-[radial-gradient(50%_100%_at_50%_100%,rgba(0,194,254,0.35),transparent_70%)] blur-2xl"
+          />
+          <div aria-hidden="true" className="hairline absolute inset-x-0 top-0" />
           <div className="grain" />
 
           <div className="relative">
