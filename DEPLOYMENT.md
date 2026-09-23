@@ -6,7 +6,7 @@ Target end state (Shopify-style split):
 | -------------------- | -------------------------- | -------------------------------------- |
 | `verdiles.com`       | Marketing site (this repo) | `verdiles-marketing` (new)             |
 | `www.verdiles.com`   | Redirect → `verdiles.com`  | `verdiles-marketing` (new)             |
-| `app.verdiles.com`   | Admin app                  | `e-commerce-47038` (existing, default) |
+| `app.verdiley.com`   | Admin app                  | `e-commerce-47038` (existing, default) |
 | `e-commerce-47038.web.app` | Admin app            | `e-commerce-47038` (existing, default) |
 
 The admin Hosting site is never deleted or redeployed by anything in this repo.
@@ -18,23 +18,21 @@ Verified against live DNS and HTTP:
 - `verdiles.com` → `A 199.36.158.100` (Firebase Hosting) and currently serves the **admin app** (`<title>admin-app</title>`).
 - `www.verdiles.com` → `CNAME verdiles.com`, but the Firebase certificate does not cover `www`, so **HTTPS on `www` fails today**
   (`SSL: no alternative certificate subject name matches target host name`). Fixing `www` is part of this cutover.
-- `app.verdiles.com` → does not resolve yet (NXDOMAIN).
-- Admin is already independently reachable at `https://e-commerce-47038.web.app` and `https://e-commerce-47038.firebaseapp.com`.
+- `app.verdiley.com` → does not resolve yet (NXDOMAIN).
+- Admin branded lock is `https://app.verdiley.com` (Login: `https://app.verdiley.com/login`). Firebase default hosts (`e-commerce-47038.web.app` / `.firebaseapp.com`) remain cutover alternates.
 
 Because the apex already points at Firebase Hosting, moving marketing onto `verdiles.com` is a **site-to-site move inside the
 same Firebase project** — the registrar A record does not need to change.
 
 ## Build
 
-`VITE_APP_URL` is inlined at build time and is where both `Login` and the primary CTAs point. The admin app gates on auth
-at its root and toggles between sign in and create account there, so no `/login` or `/signup` path is appended.
+`VITE_APP_URL` is inlined at build time as the Verdiley admin base (`https://app.verdiley.com`).
+The marketing site appends `/login` for the Login CTA (and uses the same URL for primary CTAs).
 
 ```bash
 npm ci
-VITE_APP_URL=https://e-commerce-47038.web.app npm run build
+VITE_APP_URL=https://app.verdiley.com npm run build
 ```
-
-Switch `VITE_APP_URL` to `https://app.verdiles.com` once that subdomain is live (step 2 below), then rebuild and redeploy.
 
 `BASE_PATH` (optional) sets the Vite base for subpath hosting; it defaults to `/`, which is what Firebase Hosting needs.
 
@@ -57,7 +55,7 @@ Every deploy:
 
 ```bash
 npm ci
-VITE_APP_URL=https://e-commerce-47038.web.app npm run build
+VITE_APP_URL=https://app.verdiley.com npm run build
 firebase deploy --only hosting:marketing
 ```
 
@@ -68,9 +66,9 @@ That publishes to **https://verdiles-marketing.web.app** — a live URL to revie
 Do these in order. Step 1 gives admin a permanent home *before* the apex moves, so there is no window where admin is
 only reachable at a `.web.app` URL.
 
-### 1. Give admin `app.verdiles.com`
+### 1. Give admin `app.verdiley.com`
 
-Firebase console → Hosting → site **`e-commerce-47038`** (the admin site) → **Add custom domain** → `app.verdiles.com`.
+Firebase console → Hosting → site **`e-commerce-47038`** (the admin site) → **Add custom domain** → `app.verdiley.com`.
 
 Add the record Firebase displays at the DNS provider for `verdiles.com`:
 
@@ -79,8 +77,8 @@ Add the record Firebase displays at the DNS provider for `verdiles.com`:
 | `A`  | `app` | the IP Firebase shows (today `199.36.158.100`) |
 
 Use the exact values from the console rather than copying the IP above — Firebase sometimes issues two A records.
-Wait for the certificate to go green, then confirm `https://app.verdiles.com` loads the admin app. Admin stays reachable
-at `https://e-commerce-47038.web.app` throughout.
+Wait for the certificate to go green, then confirm `https://app.verdiley.com` loads the admin app. Admin stays reachable
+at `https://app.verdiley.com` throughout.
 
 ### 2. Move `verdiles.com` to the marketing site
 
@@ -104,17 +102,17 @@ Replace the existing `www` `CNAME` with whatever record Firebase specifies. Once
 
 ### 4. Repoint the CTAs
 
-With `app.verdiles.com` live, rebuild so Login and the CTAs use the branded host:
+Rebuild so Login and the CTAs use the branded Verdiley admin host:
 
 ```bash
-VITE_APP_URL=https://app.verdiles.com npm run build
+VITE_APP_URL=https://app.verdiley.com npm run build
 firebase deploy --only hosting:marketing
 ```
 
 ### Post-cutover checks
 
 - `https://verdiles.com` and `https://www.verdiles.com` serve the marketing site (`<title>Verdiles — …</title>`).
-- `https://app.verdiles.com` and `https://e-commerce-47038.web.app` both still serve the admin app.
+- `https://app.verdiley.com` and `https://app.verdiley.com` both still serve the admin app.
 - The nav `Login` link resolves to the admin login.
 - `https://verdiles.com/og-image.png` returns the social card — `index.html` hardcodes absolute `https://verdiles.com` URLs
   for the OG/Twitter tags, so they only resolve correctly once the apex serves marketing.

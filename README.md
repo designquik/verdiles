@@ -29,18 +29,16 @@ cp .env.example .env.local
 
 | Variable       | Purpose                                                                             | Default (when unset)               |
 | -------------- | ----------------------------------------------------------------------------------- | ---------------------------------- |
-| `VITE_APP_URL` | Base URL of the Verdiles admin app. Both `Login` and the primary CTAs resolve to it. | `https://e-commerce-47038.web.app` |
+| `VITE_APP_URL` | Verdiley admin base. Login CTA → `$VITE_APP_URL/login` (primary CTAs use the same login URL). | `https://app.verdiley.com` |
 
-The admin app gates on auth at its root and toggles between sign in and create account there, so the marketing site does
-not append `/login` or `/signup`. When the admin gains `app.verdiles.com`, set `VITE_APP_URL=https://app.verdiles.com`
-(repository variable or build environment) and redeploy — no code change needed.
+Default is the platform lock `https://app.verdiley.com`. Override via repository variable or build env and rebuild.
 
 Vite only exposes variables prefixed with `VITE_`, and they are inlined at build time — rebuild after changing them.
 
 ### Production model
 
 `verdiles.com` serves this marketing site. The admin app lives on its own host (currently
-`https://e-commerce-47038.web.app`), and this site links out to it for Login and every primary CTA.
+`https://app.verdiley.com`), and this site links out to it for Login and every primary CTA.
 
 ## Brand rules
 
@@ -101,7 +99,7 @@ The build output is a fully static `dist/` folder — any static host works.
 
 ```bash
 npm ci
-VITE_APP_URL=https://e-commerce-47038.web.app npm run build
+VITE_APP_URL=https://app.verdiley.com npm run build
 firebase deploy --only hosting:marketing
 ```
 
@@ -109,7 +107,7 @@ SPA note: this is a single page with hash anchors, so no rewrite rules are requi
 `firebase.json` already rewrites unknown paths to `/index.html`.
 
 **[DEPLOYMENT.md](DEPLOYMENT.md) is the runbook** — it covers the Firebase Hosting setup, the exact DNS steps to put
-marketing on `verdiles.com` while the admin app keeps `e-commerce-47038.web.app` and gains `app.verdiles.com`, and the
+marketing on `verdiles.com` while the admin app primary is `app.verdiley.com` (Firebase default `e-commerce-47038.web.app` remains a cutover alternate), and the
 GitHub Pages preview path.
 
 `BASE_PATH` sets the Vite base for subpath hosting (GitHub Pages project sites). It defaults to `/`, which is what
