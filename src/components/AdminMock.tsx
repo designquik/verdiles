@@ -108,7 +108,7 @@ export function AdminMock() {
             <div className="flex min-w-0 flex-1 items-center gap-2 rounded-full border border-white/7 bg-black/40 px-3 py-1">
               <span className="size-1.5 rounded-full bg-brand-emerald shadow-[0_0_8px_rgba(0,245,124,0.9)]" />
               <span className="truncate text-[0.68rem] text-white/45">
-                app.verdiles.com/<span className="text-white/75">{tenant.id}</span>/overview
+                app.verdiley.com/<span className="text-white/75">{tenant.id}</span>/overview
               </span>
             </div>
             <div className="hidden items-center gap-2 sm:flex">
