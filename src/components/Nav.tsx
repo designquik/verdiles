@@ -67,11 +67,6 @@ export function Nav() {
                   }`}
                 >
                   {group.label}
-                  {group.label === 'Pricing' && (
-                    <span className="rounded-full border border-brand-gold/30 bg-brand-gold/10 px-1.5 py-px text-[0.6rem] font-semibold tracking-wide text-brand-gold/90 uppercase">
-                      Soon
-                    </span>
-                  )}
                   {group.menu && <Icon name="chevron" className="size-3 opacity-50" />}
                 </a>
               </div>
@@ -183,11 +178,6 @@ export function Nav() {
                     className="font-display flex items-center gap-3 text-3xl tracking-tight text-white"
                   >
                     {group.label}
-                    {group.label === 'Pricing' && (
-                      <span className="rounded-full border border-brand-gold/30 bg-brand-gold/10 px-2 py-0.5 font-sans text-[0.6rem] font-semibold tracking-wide text-brand-gold/90 uppercase">
-                        Soon
-                      </span>
-                    )}
                   </a>
                   {group.menu && (
                     <div className="mt-3 grid gap-1.5">
