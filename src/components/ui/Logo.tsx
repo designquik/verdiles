@@ -2,14 +2,14 @@ import markSrc from '../../assets/verdiles-mark.png'
 import wordmarkSrc from '../../assets/verdiles-wordmark.png'
 
 /**
- * The Verdiles wordmark is a locked brand asset: the emerald-to-cyan
+ * The Verdiley wordmark is a locked brand asset: the emerald-to-cyan
  * gradient lettering is rendered from the official artwork, never re-typeset.
  */
 export function Wordmark({ className = 'h-5' }: { className?: string }) {
   return (
     <img
       src={wordmarkSrc}
-      alt="Verdiles"
+      alt="Verdiley"
       width={640}
       height={103}
       className={`w-auto select-none ${className}`}

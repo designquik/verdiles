@@ -5,7 +5,7 @@ export function TrustStrip() {
   const loop = [...trustSegments, ...trustSegments]
 
   return (
-    <section aria-label="Verdiles at a glance" className="relative border-y border-white/6 bg-black/40 py-10">
+    <section aria-label="Verdiley at a glance" className="relative border-y border-white/6 bg-black/40 py-10">
       <div className="shell">
         <Reveal>
           <p className="text-center text-[0.68rem] font-semibold tracking-[0.3em] text-white/35 uppercase">

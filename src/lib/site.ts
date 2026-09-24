@@ -6,11 +6,11 @@
 const rawAppUrl = import.meta.env.VITE_APP_URL?.trim()
 
 export const site = {
-  name: 'Verdiles',
+  name: 'Verdiley',
   parent: 'Designquik',
-  domain: 'verdiles.com',
+  domain: 'verdiley.com',
   appUrl: rawAppUrl && rawAppUrl.length > 0 ? rawAppUrl : 'https://app.verdiley.com',
-  contactEmail: 'hello@verdiles.com',
+  contactEmail: 'hello@designquik.com',
   tagline: 'Multi-tenant ecommerce platform',
 } as const
 
@@ -124,7 +124,7 @@ export const features: Feature[] = [
     id: 'domains',
     eyebrow: 'Custom domains',
     title: 'Go live on their domain, not a subdomain',
-    copy: 'Verdiles walks the client through DNS, verifies records, issues certificates and flips the storefront live on your signal.',
+    copy: 'Verdiley walks the client through DNS, verifies records, issues certificates and flips the storefront live on your signal.',
     bullets: ['Copy-paste DNS instructions', 'Automatic TLS and renewals', 'Staged preview before cutover'],
     cols: 1,
   },
@@ -142,7 +142,7 @@ export const steps = [
   {
     step: '01',
     title: 'Create the tenant',
-    copy: 'Name the storefront, choose a region and currency, and Verdiles provisions an isolated store with its own settings and preview URL.',
+    copy: 'Name the storefront, choose a region and currency, and Verdiley provisions an isolated store with its own settings and preview URL.',
     meta: 'Provisioned in seconds',
   },
   {
@@ -273,27 +273,36 @@ export const solutions = [
 
 export const pricingTiers = [
   {
-    name: 'Studio',
-    blurb: 'For small teams launching their first Verdiles tenants.',
-    price: 'Coming soon',
-    features: ['Up to 3 tenants', 'Theme library', 'Custom domains + TLS', 'Email support'],
-    featured: false,
+    name: 'Entrepreneur',
+    blurb: 'For founders launching their first Verdiley store.',
+    price: '$20',
+    priceSuffix: '/mo',
+    features: ['1 store', 'Theme library', 'Custom domains + TLS', 'Email support'],
+    featured: true,
+    ctaLabel: 'Choose Entrepreneur',
   },
   {
-    name: 'Agency',
-    blurb: 'For agencies running client storefronts as a practice.',
-    price: 'Coming soon',
-    features: ['Unlimited tenants', 'Tenant templates & cloning', 'Client-scoped roles', 'Priority support from Designquik'],
-    featured: true,
+    name: 'Business',
+    blurb: 'For growing brands running more catalog and volume.',
+    price: '$149',
+    priceSuffix: '/mo',
+    features: ['Multiple stores', 'Tenant templates', 'Priority support', 'Advanced catalog tools'],
+    featured: false,
+    ctaLabel: 'Choose Business',
   },
   {
     name: 'Enterprise',
     blurb: 'For multi-brand groups with governance requirements.',
-    price: "Let's talk",
-    features: ['Dedicated infrastructure options', 'SSO and audit logging', 'Custom apps and integrations', 'Named solutions engineer'],
+    price: '$299',
+    priceSuffix: '/mo',
+    features: ['Unlimited tenants', 'SSO and audit options', 'Custom apps and integrations', 'Named solutions engineer'],
     featured: false,
+    ctaLabel: 'Choose Enterprise',
   },
 ]
+
+/** Public pricing CTAs land on the live admin pricing page (Stripe checkout). */
+export const pricingUrl = `${adminUrl}/pricing`
 
 export const footerColumns = [
   {

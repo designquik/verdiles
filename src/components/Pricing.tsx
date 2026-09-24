@@ -1,4 +1,4 @@
-import { pricingTiers, signupUrl, site } from '../lib/site'
+import { pricingTiers, pricingUrl, site } from '../lib/site'
 import { ArrowIcon, ButtonLink } from './ui/Button'
 import { Icon } from './ui/Icon'
 import { Reveal } from './ui/Reveal'
@@ -12,11 +12,11 @@ export function Pricing() {
           eyebrow="Pricing"
           title={
             <>
-              Plans are being finalised.{' '}
-              <span className="font-display text-brand-gradient italic">Founding partners get founding rates.</span>
+              Simple plans for every stage.{' '}
+              <span className="font-display text-brand-gradient italic">Start at $20/mo.</span>
             </>
           }
-          copy="Verdiles pricing lands with the public launch. Until then, tell us how many tenants you run and we will scope it with you directly."
+          copy={`${site.name} plans are live. Pick a tier and continue in the admin to subscribe.`}
         />
 
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
@@ -35,7 +35,7 @@ export function Pricing() {
                     className="pointer-events-none absolute inset-0 rounded-[1.25rem] bg-[radial-gradient(80%_50%_at_50%_0%,rgba(0,227,187,0.14),transparent_70%)]"
                   />
                   <span className="absolute -top-3 left-7 rounded-full bg-[linear-gradient(96deg,var(--color-brand-emerald),var(--color-brand-cyan))] px-3 py-1 text-[0.62rem] font-bold tracking-[0.14em] text-ink-950 uppercase">
-                    Most requested
+                    Most popular
                   </span>
                 </>
               )}
@@ -46,9 +46,9 @@ export function Pricing() {
 
                 <p className="mt-6 flex items-baseline gap-2">
                   <span className="font-display text-3xl text-white">{tier.price}</span>
-                  <span className="rounded-full border border-brand-gold/25 bg-brand-gold/10 px-2 py-0.5 text-[0.58rem] font-semibold tracking-[0.14em] text-brand-gold uppercase">
-                    Placeholder
-                  </span>
+                  {'priceSuffix' in tier && tier.priceSuffix ? (
+                    <span className="text-[0.85rem] text-white/45">{tier.priceSuffix}</span>
+                  ) : null}
                 </p>
 
                 <ul className="mt-6 space-y-2.5 border-t border-white/7 pt-6">
@@ -62,12 +62,8 @@ export function Pricing() {
               </div>
 
               <div className="relative mt-8 pt-2">
-                <ButtonLink
-                  href={tier.featured ? signupUrl : `mailto:${site.contactEmail}?subject=Verdiles%20${tier.name}%20plan`}
-                  variant={tier.featured ? 'primary' : 'ghost'}
-                  className="w-full"
-                >
-                  {tier.featured ? 'Start building' : 'Talk to us'}
+                <ButtonLink href={pricingUrl} variant={tier.featured ? 'primary' : 'ghost'} className="w-full">
+                  {tier.ctaLabel}
                   <ArrowIcon />
                 </ButtonLink>
               </div>

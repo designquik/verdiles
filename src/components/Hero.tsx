@@ -55,7 +55,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p {...rise(0.24)} className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg">
-            Verdiles gives agencies and brands a single admin to spin up tenants, build catalogs, ship themes, install apps and
+            Verdiley gives agencies and brands a single admin to spin up tenants, build catalogs, ship themes, install apps and
             take custom domains live — without rebuilding the stack for every launch.
           </motion.p>
 
