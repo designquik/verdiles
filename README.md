@@ -107,7 +107,7 @@ SPA note: this is a single page with hash anchors, so no rewrite rules are requi
 `firebase.json` already rewrites unknown paths to `/index.html`.
 
 **[DEPLOYMENT.md](DEPLOYMENT.md) is the runbook** — it covers the Firebase Hosting setup, the exact DNS steps to put
-marketing on `verdiles.com` while the admin app primary is `app.verdiley.com` (Firebase default `e-commerce-47038.web.app` remains a cutover alternate), and the
+marketing on `verdiles.com` while the admin app primary is `app.verdiley.com` (`admin.verdiley.com` is an accepted alias; the Firebase default `e-commerce-47038.web.app` is not a link target), and the
 GitHub Pages preview path.
 
 `BASE_PATH` sets the Vite base for subpath hosting (GitHub Pages project sites). It defaults to `/`, which is what

@@ -7,7 +7,7 @@ Target end state (Shopify-style split):
 | `verdiles.com`       | Marketing site (this repo) | `verdiles-marketing` (new)             |
 | `www.verdiles.com`   | Redirect → `verdiles.com`  | `verdiles-marketing` (new)             |
 | `app.verdiley.com`   | Admin app                  | `e-commerce-47038` (existing, default) |
-| `e-commerce-47038.web.app` | Admin app            | `e-commerce-47038` (existing, default) |
+| `admin.verdiley.com` | Admin app (accepted alias, not the canonical link) | `e-commerce-47038` (existing, default) |
 
 The admin Hosting site is never deleted or redeployed by anything in this repo.
 
@@ -19,7 +19,7 @@ Verified against live DNS and HTTP:
 - `www.verdiles.com` → `CNAME verdiles.com`, but the Firebase certificate does not cover `www`, so **HTTPS on `www` fails today**
   (`SSL: no alternative certificate subject name matches target host name`). Fixing `www` is part of this cutover.
 - `app.verdiley.com` → does not resolve yet (NXDOMAIN).
-- Admin branded lock is `https://app.verdiley.com` (Login: `https://app.verdiley.com/login`). Firebase default hosts (`e-commerce-47038.web.app` / `.firebaseapp.com`) remain cutover alternates.
+- Admin branded lock is `https://app.verdiley.com` (Login: `https://app.verdiley.com/login`). `https://admin.verdiley.com` is an accepted alias but not the canonical link. The Firebase default hosts (`e-commerce-47038.web.app` / `.firebaseapp.com`) and the old `app.verdiles.com` / `app.verdily.com` / `app.verdili.com` hosts are not link targets.
 
 Because the apex already points at Firebase Hosting, moving marketing onto `verdiles.com` is a **site-to-site move inside the
 same Firebase project** — the registrar A record does not need to change.
@@ -70,7 +70,7 @@ only reachable at a `.web.app` URL.
 
 Firebase console → Hosting → site **`e-commerce-47038`** (the admin site) → **Add custom domain** → `app.verdiley.com`.
 
-Add the record Firebase displays at the DNS provider for `verdiles.com`:
+Add the record Firebase displays at the DNS provider for `verdiley.com`:
 
 | Type | Name  | Value                             |
 | ---- | ----- | --------------------------------- |
@@ -78,7 +78,7 @@ Add the record Firebase displays at the DNS provider for `verdiles.com`:
 
 Use the exact values from the console rather than copying the IP above — Firebase sometimes issues two A records.
 Wait for the certificate to go green, then confirm `https://app.verdiley.com` loads the admin app. Admin stays reachable
-at `https://app.verdiley.com` throughout.
+at its Firebase default host throughout, but that host is never a marketing link target.
 
 ### 2. Move `verdiles.com` to the marketing site
 
@@ -112,7 +112,7 @@ firebase deploy --only hosting:marketing
 ### Post-cutover checks
 
 - `https://verdiles.com` and `https://www.verdiles.com` serve the marketing site (`<title>Verdiles — …</title>`).
-- `https://app.verdiley.com` and `https://app.verdiley.com` both still serve the admin app.
+- `https://app.verdiley.com` serves the admin app with a valid certificate (`https://admin.verdiley.com` may also serve it as an alias).
 - The nav `Login` link resolves to the admin login.
 - `https://verdiles.com/og-image.png` returns the social card — `index.html` hardcodes absolute `https://verdiles.com` URLs
   for the OG/Twitter tags, so they only resolve correctly once the apex serves marketing.
