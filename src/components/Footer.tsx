@@ -16,7 +16,7 @@ export function Footer() {
       <div className="shell">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr]">
           <div>
-            <a href="#top" aria-label="Verdiles home" className="inline-block">
+            <a href="#top" aria-label="Verdiley home" className="inline-block">
               <Wordmark className="h-5" />
             </a>
             <p className="mt-5 max-w-sm text-[0.88rem] leading-relaxed text-white/50">

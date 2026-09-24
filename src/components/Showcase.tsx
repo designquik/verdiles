@@ -23,7 +23,7 @@ export function Showcase() {
               <span className="font-display text-brand-gradient italic">Zero shared compromises.</span>
             </>
           }
-          copy="Each storefront gets its own theme, catalog, apps and domain — while your team operates all of them from a single Verdiles admin."
+          copy="Each storefront gets its own theme, catalog, apps and domain — while your team operates all of them from a single Verdiley admin."
         />
 
         <Reveal delay={0.1} className="mt-12 flex flex-wrap justify-center gap-2">

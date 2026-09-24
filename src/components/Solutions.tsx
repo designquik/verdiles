@@ -16,7 +16,7 @@ export function Solutions() {
                 Built for the teams running <span className="font-display text-brand-gradient italic">more than one</span> store
               </>
             }
-            copy="Verdiles assumes a portfolio. Isolation, roles and reporting are designed around running many storefronts at once."
+            copy="Verdiley assumes a portfolio. Isolation, roles and reporting are designed around running many storefronts at once."
           />
           <Reveal delay={0.15}>
             <ButtonLink href={signupUrl} variant="ghost">

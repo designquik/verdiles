@@ -31,7 +31,7 @@ export function Nav() {
         <div className="shell flex h-9 items-center justify-between text-[0.72rem] tracking-wide text-white/50">
           <p className="flex items-center gap-2">
             <span className="size-1 rotate-45 bg-brand-gold/80" />
-            <span className="text-white/65">Verdiles is a {site.parent} platform.</span>
+            <span className="text-white/65">Verdiley is a {site.parent} platform.</span>
             <span>Early partner program is open for agencies.</span>
           </p>
           <a href={`mailto:${site.contactEmail}`} className="group flex items-center gap-1.5 transition hover:text-white">
@@ -48,7 +48,7 @@ export function Nav() {
         onMouseLeave={() => setOpenMenu(null)}
       >
         <nav className="shell flex h-17 items-center justify-between gap-6" aria-label="Main">
-          <a href="#top" className="group flex items-center gap-3" aria-label="Verdiles home">
+          <a href="#top" className="group flex items-center gap-3" aria-label="Verdiley home">
             <Wordmark className="h-[1.15rem] transition-all duration-500 group-hover:brightness-125 sm:h-[1.3rem]" />
             <span className="hidden text-[0.62rem] leading-tight tracking-[0.22em] text-white/35 uppercase xl:block">
               by

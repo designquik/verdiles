@@ -136,7 +136,7 @@ export function Features() {
               <span className="font-display text-brand-gradient italic">Multi-tenant by design.</span>
             </>
           }
-          copy="Catalog, themes, apps, settings and domains are first-class in Verdiles — scoped to each tenant, operated from one place."
+          copy="Catalog, themes, apps, settings and domains are first-class in Verdiley — scoped to each tenant, operated from one place."
         />
 
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
