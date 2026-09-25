@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
 
-import { signupUrl, site } from '../lib/site'
+import { offerCopy, startFreeUrl, site } from '../lib/site'
 import { AdminMock } from './AdminMock'
 import { ArrowIcon, ButtonLink } from './ui/Button'
 import { Icon } from './ui/Icon'
@@ -60,14 +60,18 @@ export function Hero() {
           </motion.p>
 
           <motion.div {...rise(0.34)} className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <ButtonLink href={signupUrl} size="lg" className="w-full sm:w-auto">
-              Open the admin
+            <ButtonLink href={startFreeUrl} size="lg" className="w-full sm:w-auto">
+              Start for free
               <ArrowIcon />
             </ButtonLink>
             <ButtonLink href="#how-it-works" variant="ghost" size="lg" className="w-full sm:w-auto">
               See how it works
             </ButtonLink>
           </motion.div>
+
+          <motion.p {...rise(0.4)} className="mt-5 text-[0.82rem] text-white/45">
+            {offerCopy.subhead}
+          </motion.p>
 
           <motion.ul {...rise(0.44)} className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5">
             {proofPoints.map((point) => (
