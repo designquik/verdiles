@@ -1,4 +1,4 @@
-import { signupUrl, solutions } from '../lib/site'
+import { startFreeUrl, solutions } from '../lib/site'
 import { ArrowIcon, ButtonLink } from './ui/Button'
 import { Reveal } from './ui/Reveal'
 import { SectionHeading } from './ui/Section'
@@ -19,8 +19,8 @@ export function Solutions() {
             copy="Verdiley assumes a portfolio. Isolation, roles and reporting are designed around running many storefronts at once."
           />
           <Reveal delay={0.15}>
-            <ButtonLink href={signupUrl} variant="ghost">
-              Explore the admin
+            <ButtonLink href={startFreeUrl} variant="ghost">
+              Start for free
               <ArrowIcon />
             </ButtonLink>
           </Reveal>

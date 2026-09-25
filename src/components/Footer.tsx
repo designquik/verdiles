@@ -1,4 +1,4 @@
-import { footerColumns, loginUrl, signupUrl, site } from '../lib/site'
+import { footerColumns, loginUrl, startFreeUrl, site } from '../lib/site'
 import { ArrowIcon } from './ui/Button'
 import { Wordmark } from './ui/Logo'
 
@@ -26,10 +26,10 @@ export function Footer() {
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
-                href={signupUrl}
+                href={startFreeUrl}
                 className="group inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-[0.8rem] font-medium text-white/80 transition hover:border-white/25 hover:text-white"
               >
-                Start building
+                Start for free
                 <ArrowIcon />
               </a>
               <a href={loginUrl} className="text-[0.8rem] text-white/55 transition hover:text-white">

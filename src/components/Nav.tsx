@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 
-import { loginUrl, navGroups, signupUrl, site } from '../lib/site'
+import { loginUrl, navGroups, startFreeUrl, site } from '../lib/site'
 import { ArrowIcon, ButtonLink } from './ui/Button'
 import { Icon } from './ui/Icon'
 import { Wordmark } from './ui/Logo'
@@ -48,7 +48,7 @@ export function Nav() {
         onMouseLeave={() => setOpenMenu(null)}
       >
         <nav className="shell flex h-17 items-center justify-between gap-6" aria-label="Main">
-          <a href="#top" className="group flex items-center gap-3" aria-label="Verdiley home">
+          <a href="/#top" className="group flex items-center gap-3" aria-label="Verdiley home">
             <Wordmark className="h-[1.15rem] transition-all duration-500 group-hover:brightness-125 sm:h-[1.3rem]" />
             <span className="hidden text-[0.62rem] leading-tight tracking-[0.22em] text-white/35 uppercase xl:block">
               by
@@ -80,8 +80,8 @@ export function Nav() {
             >
               Login
             </a>
-            <ButtonLink href={signupUrl} size="sm" className="max-[359px]:hidden">
-              Start building
+            <ButtonLink href={startFreeUrl} size="sm" className="max-[359px]:hidden">
+              Start for free
               <ArrowIcon />
             </ButtonLink>
             <button
@@ -196,8 +196,8 @@ export function Nav() {
                 </motion.div>
               ))}
               <div className="mt-8 flex flex-col gap-3">
-                <ButtonLink href={signupUrl} size="lg">
-                  Start building
+                <ButtonLink href={startFreeUrl} size="lg">
+                  Start for free
                   <ArrowIcon />
                 </ButtonLink>
                 <ButtonLink href={loginUrl} variant="ghost" size="lg">

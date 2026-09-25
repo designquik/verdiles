@@ -22,6 +22,24 @@ export const adminUrl = site.appUrl.replace(/\/$/, '')
 export const loginUrl = `${adminUrl}/login`
 export const signupUrl = loginUrl
 
+/** Public Start for free path (marketing SPA). */
+export const startFreeUrl = '/start'
+
+/**
+ * Intro offer shown on public marketing (copy-only until admin trial billing is wired).
+ * Path: 3 days free → $1/month for 3 months → pricing TBD after.
+ */
+export const offerCopy = {
+  headline: 'Start for free',
+  subhead: '3 days free, then $1/month for 3 months.',
+  cardHint: 'Enter your email to continue. No plan picker — just get started.',
+  steps: [
+    '3 days free',
+    'Then $1/month for 3 months',
+    'After that: pricing TBD (confirmed in product or by contact)',
+  ],
+} as const
+
 export type NavGroup = {
   label: string
   href: string
@@ -59,7 +77,7 @@ export const navGroups: NavGroup[] = [
       { title: 'Showcase', description: 'See the themes teams are shipping today.', href: '#showcase' },
     ],
   },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Start for free', href: startFreeUrl },
 ]
 
 export const trustSegments = [
@@ -336,7 +354,7 @@ export const footerColumns = [
     title: 'Resources',
     links: [
       { label: 'How it works', href: '#how-it-works' },
-      { label: 'Pricing', href: '#pricing' },
+      { label: 'Start for free', href: startFreeUrl },
       { label: 'Documentation', href: '#' },
       { label: 'Status', href: '#' },
     ],

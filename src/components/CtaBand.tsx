@@ -1,4 +1,4 @@
-import { signupUrl, site } from '../lib/site'
+import { offerCopy, startFreeUrl, site } from '../lib/site'
 import { ArrowIcon, ButtonLink } from './ui/Button'
 import { Reveal } from './ui/Reveal'
 import { Wordmark } from './ui/Logo'
@@ -30,12 +30,13 @@ export function CtaBand() {
               Ready to launch your <span className="font-display text-brand-gradient italic">first tenant?</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/60 sm:text-lg">
-              Open the admin, create a storefront and see how fast a catalog, theme and custom domain come together on {site.name}.
+              {offerCopy.subhead} After that, pricing is TBD. Create a storefront and see how fast a catalog, theme and custom
+              domain come together on {site.name}.
             </p>
 
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <ButtonLink href={signupUrl} size="lg" className="w-full sm:w-auto">
-                Open the admin
+              <ButtonLink href={startFreeUrl} size="lg" className="w-full sm:w-auto">
+                Start for free
                 <ArrowIcon />
               </ButtonLink>
               <ButtonLink href={`mailto:${site.contactEmail}`} variant="ghost" size="lg" className="w-full sm:w-auto">
