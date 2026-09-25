@@ -91,6 +91,9 @@ export function StartForFreePage() {
         <p className="mt-3 text-center text-[0.68rem] tracking-wide text-white/25">
           Path: {startFreeUrl} · promo messaging on marketing only until trial billing is enabled
         </p>
+        <p className="mt-10 text-center font-display text-sm tracking-[0.06em] text-white/50 sm:mt-12">
+          Verdiley
+        </p>
       </main>
     </div>
   )
