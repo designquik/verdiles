@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react'
 
 import { loginUrl, offerCopy, signupUrl, site, startFreeUrl } from '../lib/site'
-import { Mark, Wordmark } from './ui/Logo'
+import { Wordmark } from './ui/Logo'
 
 /**
  * Shopify-inspired Start for free layout: dark full-page backdrop + centered white card.
@@ -38,9 +38,6 @@ export function StartForFreePage() {
 
       <main className="shell flex flex-1 flex-col items-center justify-center px-4 pb-16 pt-6 sm:pb-24">
         <div className="mx-auto w-full max-w-md text-center">
-          <div className="mb-8 flex justify-center">
-            <Mark className="size-12 sm:size-14" />
-          </div>
           <h1 className="text-[1.85rem] leading-tight font-semibold tracking-tight sm:text-[2.15rem]">
             {offerCopy.headline}
           </h1>
