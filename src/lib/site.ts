@@ -27,17 +27,12 @@ export const startFreeUrl = '/start'
 
 /**
  * Intro offer shown on public marketing (copy-only until admin trial billing is wired).
- * Path: 3 days free → $1/month for 3 months → pricing TBD after.
+ * Path: 3 days free → $1/month for 3 months.
  */
 export const offerCopy = {
   headline: 'Start for free',
   subhead: '3 days free, then $1/month for 3 months.',
   cardHint: 'Enter your email to continue. No plan picker — just get started.',
-  steps: [
-    '3 days free',
-    'Then $1/month for 3 months',
-    'After that: pricing TBD (confirmed in product or by contact)',
-  ],
 } as const
 
 export type NavGroup = {

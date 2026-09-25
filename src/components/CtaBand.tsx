@@ -30,7 +30,7 @@ export function CtaBand() {
               Ready to launch your <span className="font-display text-brand-gradient italic">first tenant?</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/60 sm:text-lg">
-              {offerCopy.subhead} After that, pricing is TBD. Create a storefront and see how fast a catalog, theme and custom
+              {offerCopy.subhead} Create a storefront and see how fast a catalog, theme and custom
               domain come together on {site.name}.
             </p>
 

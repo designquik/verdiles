@@ -45,17 +45,9 @@ export function StartForFreePage() {
             {offerCopy.headline}
           </h1>
           <p className="mt-3 text-[0.95rem] leading-relaxed text-white/60 sm:text-base">{offerCopy.subhead}</p>
-          <ol className="mx-auto mt-5 max-w-sm space-y-1.5 text-left text-[0.82rem] text-white/45">
-            {offerCopy.steps.map((step, index) => (
-              <li key={step} className="flex gap-2.5">
-                <span className="font-semibold text-brand-teal/90">{index + 1}.</span>
-                <span>{step}</span>
-              </li>
-            ))}
-          </ol>
         </div>
 
-        <div className="mt-8 w-full max-w-md rounded-2xl bg-white p-6 text-left text-ink-950 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)] sm:p-8">
+        <div className="mt-5 w-full max-w-md rounded-2xl bg-white p-6 text-left text-ink-950 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)] sm:mt-6 sm:p-8">
           <h2 className="text-lg font-semibold tracking-tight">Start for free</h2>
           <p className="mt-1 text-sm text-ink-950/55">{offerCopy.cardHint}</p>
 
@@ -85,8 +77,7 @@ export function StartForFreePage() {
           </form>
 
           <p className="mt-4 text-[0.72rem] leading-relaxed text-ink-950/45">
-            By continuing you agree to create a {site.name} account. After the intro period, next pricing is TBD — we&apos;ll
-            confirm in-product or by contact before any paid upgrade.
+            By continuing you agree to create a {site.name} account.
           </p>
         </div>
 

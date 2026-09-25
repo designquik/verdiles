@@ -70,7 +70,7 @@ export function Hero() {
           </motion.div>
 
           <motion.p {...rise(0.4)} className="mt-5 text-[0.82rem] text-white/45">
-            {offerCopy.subhead} After that, pricing TBD.
+            {offerCopy.subhead}
           </motion.p>
 
           <motion.ul {...rise(0.44)} className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5">
